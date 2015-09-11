@@ -2,12 +2,12 @@ import processing.sound.*;
 SoundFile file;
 PImage bg, vacCur;
 
-int sandNum = 6000;
+int sandNum = 6500;
 int[] sandX = new int[sandNum];
 int[] sandY = new int[sandNum];
 int vacRadius = 29;
 int disRadius = 7;
-int ellSize = 6;
+int ellSize = 7;
 boolean play = false;          
 
 
@@ -29,11 +29,12 @@ void draw() {
   background(bg);
   float x,y;
   float easing = 0.15;
-  if (play){file.play();}else{file.stop();}
+  if (play){file.loop();file.amp(1);}else{file.amp(0);}
  
     for(int i=0;i<sandNum;i++){
       if(mousePressed){
         play = true;
+        vacRadius = int(random(25,35));
         if(mouseX-sandX[i]<vacRadius && mouseX-sandX[i]>-vacRadius
         && mouseY-sandY[i]<vacRadius && mouseY-sandY[i]>-vacRadius){
           
@@ -47,10 +48,11 @@ void draw() {
           
           if(mouseX-sandX[i]<disRadius && mouseX-sandX[i]>-disRadius
           && mouseY-sandY[i]<disRadius && mouseY-sandY[i]>-disRadius){
-            sandX[i] = -50;
+            sandX[i] = -4*ellSize;
           }
         } 
     }else{play=false;}
+    //ellSize = int(random(6,8));
     ellipse(sandX[i],sandY[i],ellSize,ellSize);
   }
 }
