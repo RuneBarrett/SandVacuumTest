@@ -2,10 +2,10 @@ import processing.sound.*;
 SoundFile file;
 PImage bg, vacCur;
 
-int sandNum = 6500;
+int sandNum = 6000;
 int[] sandX = new int[sandNum];
 int[] sandY = new int[sandNum];
-int vacRadius = 29;
+int vacRadius;
 int disRadius = 7;
 int ellSize = 7;
 boolean play = false;          
